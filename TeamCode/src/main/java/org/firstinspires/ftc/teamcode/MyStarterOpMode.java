@@ -6,19 +6,19 @@ import com.qualcomm.robotcore.util.Range;
 
 class MyStarterOpMode extends LinearOpMode {
 
-    private DcMotor leftFront;
-    private DcMotor rightFront;
-    private DcMotor leftBack;
-    private DcMotor rightBack;
+    private DcMotor lfWheel;
+    private DcMotor rfWheel;
+    private DcMotor lbWheel;
+    private DcMotor rbWheel;
 
-    //This is your bare-bones op-mode class
+    
     @Override //Don't forget this, it is necessary
     public void runOpMode()
     {
-        leftFront = hardwareMap.get(DcMotor.class, "lf");
-        rightFront = hardwareMap.get(DcMotor.class, "rf");
-        leftBack = hardwareMap.get(DcMotor.class, "lb");
-        rightBack = hardwareMap.get(DcMotor.class, "rb");
+        lfWheel = hardwareMap.get(DcMotor.class, "lf");
+        rfWheel = hardwareMap.get(DcMotor.class, "rf");
+        lbWheel = hardwareMap.get(DcMotor.class, "lb");
+        rbWheel = hardwareMap.get(DcMotor.class, "rb");
 
 
         waitForStart();
@@ -37,18 +37,18 @@ class MyStarterOpMode extends LinearOpMode {
             lbPower = tank + turn;
             rbPower = tank - turn;
 
-            leftFront.setPower(Range.clip(lfPower, -1., 1.)); //make sure your values don't go beyond -1 or 1
-            rightFront.setPower(Range.clip(rfPower, -1., 1.));
-            leftBack.setPower(Range.clip(lbPower, -1., 1.));
-            rightBack.setPower(Range.clip(rbPower, -1., 1.));
+            lfWheel.setPower(Range.clip(lfPower, -1., 1.)); //make sure your values don't go beyond -1 or 1
+            rfWheel.setPower(Range.clip(rfPower, -1., 1.));
+            lbWheel.setPower(Range.clip(lbPower, -1., 1.));
+            rbWheel.setPower(Range.clip(rbPower, -1., 1.));
 
 
             //Telemetry allows us to display info to the driver
 
-            telemetry.addData("Left Front: ", leftFront.getPower());
-            telemetry.addData("Right Front: ", rightFront.getPower());
-            telemetry.addData("Left Back: ", leftBack.getPower());
-            telemetry.addData("Right Back: ", rightBack.getPower());
+            telemetry.addData("Left Front: ", lfWheel.getPower());
+            telemetry.addData("Right Front: ", rfWheel.getPower());
+            telemetry.addData("Left Back: ", lbWheel.getPower());
+            telemetry.addData("Right Back: ", rbWheel.getPower());
 
             //all previously displayed telemetry is deleted and replaced will all the above
             telemetry.update();
