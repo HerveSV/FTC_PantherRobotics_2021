@@ -11,7 +11,6 @@ public class test2 extends LinearOpMode
     @Override
     public void runOpMode()
     {
-
         waitForStart();
         while(opModeIsActive())
         {
