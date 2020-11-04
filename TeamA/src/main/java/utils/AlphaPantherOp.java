@@ -3,12 +3,14 @@ package utils;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-
 @Disabled
-public class AlphaPantherOp extends LinearOpMode
+public abstract class AlphaPantherOp extends LinearOpMode
 {
+    protected final ElapsedTime runtime = new ElapsedTime();
+
     protected DcMotor lfWheel, rfWheel, lbWheel, rbWheel;
 
     /**
@@ -37,11 +39,7 @@ public class AlphaPantherOp extends LinearOpMode
     private boolean m_sleepPostMove = false; // Set to true for the robot to momentarily sleep after each move
     private long m_sleepAmountMs = 100; // Sleeps for 100 milliseconds after each move
 
-    @Override
-    public void runOpMode()
-    {
 
-    }
 
     protected void initRobot()
     {
@@ -278,6 +276,11 @@ public class AlphaPantherOp extends LinearOpMode
     private void encoderDrive(int newLfTarget, int newRfTarget, int newLbTarget, int newRbTarget, double speed)
     {
         encoderDrive(newLfTarget, newRfTarget, newLbTarget, newRbTarget, speed, speed, speed, speed);
+    }
+
+    protected double timeLeft()
+    {
+        return 30. - runtime.time();
     }
 
 }

@@ -75,6 +75,7 @@ public class opencvSkystoneDetector extends LinearOpMode {
         phoneCam.openCameraDevice();//open camera
         phoneCam.setPipeline(new StageSwitchingPipeline());//different stages
         phoneCam.startStreaming(rows, cols, OpenCvCameraRotation.UPRIGHT);//display on RC
+
         //width, height
         //width = height in this case, because camera is in portrait mode.
 
@@ -146,7 +147,6 @@ public class opencvSkystoneDetector extends LinearOpMode {
             //higher cb = less blue = yellow stone = grey
             Imgproc.cvtColor(input, yCbCrChan2Mat, Imgproc.COLOR_RGB2YCrCb);//converts rgb to ycrcb
             Core.extractChannel(yCbCrChan2Mat, yCbCrChan2Mat, 2);//takes cb difference and stores
-
             //b&w
             Imgproc.threshold(yCbCrChan2Mat, thresholdMat, 102, 255, Imgproc.THRESH_BINARY_INV);
 
