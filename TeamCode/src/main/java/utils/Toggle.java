@@ -30,6 +30,11 @@ public class Toggle
         return false;
     }
 
+    public void print()
+    {
+
+    }
+
     /**
      * Returns the state of the toggle
      * @return
