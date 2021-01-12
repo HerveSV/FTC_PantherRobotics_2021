@@ -49,6 +49,10 @@ public abstract class AlphaPantherOp extends LinearOpMode
         lbWheel = hardwareMap.get(DcMotor.class, "lb");
         rbWheel = hardwareMap.get(DcMotor.class, "rb");
 
+        lfWheel.setDirection(DcMotor.Direction.REVERSE);
+        lbWheel.setDirection(DcMotor.Direction.REVERSE);
+
+
         // Setting the PIDF values.
         // As far as you need to know, this tunes them for RUN_USING_ENCODERS
         PIDFmanager.setPIDF(lfWheel);
@@ -249,10 +253,10 @@ public abstract class AlphaPantherOp extends LinearOpMode
         while(opModeIsActive() &&
                 (lfWheel.isBusy() && rfWheel.isBusy() && lbWheel.isBusy() && rbWheel.isBusy()))
         {
-            telemetry.addData("Target Path (lf, rf, lb, rb)", "Running at: %f, %f, %f, %f", lfWheel.getTargetPosition(),  rfWheel.getTargetPosition(),  lbWheel.getTargetPosition(),  rbWheel.getTargetPosition());
+            /*telemetry.addData("Target Path (lf, rf, lb, rb)", "Running at: %f, %f, %f, %f", lfWheel.getTargetPosition(),  rfWheel.getTargetPosition(),  lbWheel.getTargetPosition(),  rbWheel.getTargetPosition());
             telemetry.addData("Target Path (lf, rf, lb, rb)", "Running at: %f, %f, %f, %f", lfWheel.getCurrentPosition(), rfWheel.getCurrentPosition(), lbWheel.getCurrentPosition(), rbWheel.getCurrentPosition());
 
-            telemetry.update();
+            telemetry.update();*/
         }
 
         // Stop motion
