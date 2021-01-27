@@ -32,6 +32,8 @@ public class autoDistanceTests extends AlphaPantherOp
             move1 = gamepad1.a;
         }
         sleep(500);
+        telemetry.addLine("Move 1");
+        telemetry.update();
         tankDrive(500, 0.5);
 
         while(opModeIsActive() && !move2)
@@ -39,6 +41,8 @@ public class autoDistanceTests extends AlphaPantherOp
             move2 = gamepad1.a;
         }
         sleep(500);
+        telemetry.addLine("Move 2");
+        telemetry.update();
         strafeDrive(500, 0.5);
 
         while(opModeIsActive() && !move3)
@@ -46,6 +50,8 @@ public class autoDistanceTests extends AlphaPantherOp
             move3 = gamepad1.a;
         }
         sleep(500);
+        telemetry.addLine("Move 3");
+        telemetry.update();
         linearDrive(-500,-500, 0.5);
 
     }
